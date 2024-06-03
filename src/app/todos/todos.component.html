@@ -1,8 +1,39 @@
 <div class="container">
   <h1 class="mt-5">Realizar la consigna debajo de este mensaje</h1>
-</div>
 
-<!-- Html faltante -->
-<div>
-  <button class="btn btn-primary" (click)="randomMethod()">Search</button>
+  <div class="text-center p-4 p-sm-6">
+
+    <!-- Html faltante -->
+    <div class="d-flex justify-content-center">
+      <input type="text" class="form-control" placeholder="Enter something to search" (change)="onChangeText($event)"/> 
+      <div *ngIf="inputText != ''">
+        <button class="btn btn-primary ms-4" (click)="randomMethod(inputText)">Search</button>
+      </div>
+    </div>
+    <div *ngIf = "searchResult === undefined">
+      <h3>{{noResult}}</h3>
+    </div>
+    <div>
+      <h3> Resultado de Busqueda: {{searchResult}} </h3>
+    </div>
+
+    <!--Por alguna razon no me funciona el ngif cuando el resultado de busqueda es undefined, igual lo deje codeado-->
+    <!--Idem para el boton de busqueda-->
+
+    <div class="flex-row" *ngFor="let item of items let i=index">
+      <div class="d-flex flex-row">
+        <div class="row p-2 card mt-2">
+          <div class="d-flex align-self-center">
+            <div>
+              <div class="mt-4">
+                <h2>Name: {{item.title}}</h2>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
